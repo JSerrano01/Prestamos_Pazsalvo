@@ -1,0 +1,9 @@
+pip install mysqlclient
+pip install flask 
+pip install bcrypt
+pip install pdfkit
+pip install oauth2client
+pip install wkhtmltopdf(requiere instalación en el servidor)
+
+wkhtmltopdf 
+import pdfkit

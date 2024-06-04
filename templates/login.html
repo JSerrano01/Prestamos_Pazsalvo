@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/estilo.css')}}">
+    <link rel="shortcut icon" href="/static/Escudo_Colmayor.png"/>
+</head>
+
+<body class="fondocol">
+    <div class="container pt-4">
+        <img src="{{url_for('static', filename='Logo-Colmayor-Color-Blanco-2.png')}}" class="center"
+            alt="Responsive image" style="height:6em; width:19em">
+        <div class="login-form">
+
+            <h3 class="text-center" style="color:aliceblue;text-shadow: 2px 2px #202020;"><b>SISTEMA DE PRESTAMOS Y
+                    NOVEDADES - PREPAZ</b></h3>
+            <h5 class="text-center" style="color:aliceblue;text-shadow: 1px 1px #202020;">Por favor, logeate con tu
+                email y password</h5>
+            <form action="/login" method="POST">
+                <h4 class="text-center">Para administrativos</h4>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" class="form-control" name="password" required>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" style="background-color:#108181 ;">Ingresar</button>
+                </div>
+            </form>
+
+        </div>
+
+        <!-- <form action="/pazsalvo">
+            <div class="form-group">
+                <button class="btn btn-primary custom-button" style="background-color:#108181;position: fixed; width: 15%; margin-left:-13em; margin-top: 5em;background-color: #108181;
+                color: white; /* Cambia el color del texto a blanco para que sea visible en el botón azul */
+                box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1); /* Agrega sombra al botón */
+                border-radius: 9%; /* Establece un borde circular */
+                padding: 1px 20px; /* Ajusta el espacio alrededor del texto dentro del botón */
+                border: none;">Generar Paz y Salvo</button>
+            </div>
+        </form> -->
+
+        <div class="form-group">
+            <a href="{{url_for("pazsalvo")}}" class="btn btn-primary custom-button" style="position: fixed;
+            bottom: 40px;
+            left: 30px;
+            background-color: #108181;
+            color: white;
+            box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 9%;
+            padding: 8px 20px;
+            border: none;">Generar Paz y Salvo</a>
+        </div>
+        
+
+
+    </div>
+    <div class="center" style="position: fixed; bottom: 0; width: 100%; margin-left: 1em;">
+        <h5 style="color:aliceblue;text-shadow: 1px 1px #202020">Desarrollado por: Juan Pablo Rojas - Programador -
+            Institución Universitaria Colegio Mayor de Antioquia - Gestión de Tecnología y Medios Audiovisuales - 2022
+        </h5>
+    </div>
+</body>
+
+</html>

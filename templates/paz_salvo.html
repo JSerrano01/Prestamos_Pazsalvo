@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/estilo.css')}}">
+</head>
+
+<body class="fondocol_paz">
+    <div class="container pt-4">
+        <img src="{{url_for('static', filename='Logo-Colmayor-Color-Blanco-2.png')}}" class="center"
+            alt="Responsive image" style="height:6em; width:19em">
+        <div class="login-form">
+
+            <h3 class="text-center" style="color:aliceblue;text-shadow: 2px 2px #202020;"><b>SISTEMA CERTIFICADO PAZ Y
+                    SALVO</b></h3>
+            <h5 class="text-center" style="color:aliceblue;text-shadow: 1px 1px #202020;">Por favor ingresa tus datos
+            </h5>
+            <form action="/consulta_all" method="post">
+                <h4 class="text-center">Para administrativos</h4>
+                <div class="form-group">
+                    <label>Cedula:</label>
+                    <input type="text" class="form-control" name="cedula" required>
+                </div>
+                <div class="form-group">
+                    <label>Facultad</label>
+                    <select class="form-control" name="dependencia" required>
+                        <option value="ADMISIONES">ADMISIONES</option>
+                        <option value="ASEGURAMIENTO DE LA CALIDAD ACADEMICA">ASEGURAMIENTO DE LA CALIDAD ACADEMICA
+                        </option>
+                        <option value="BIENES Y SERVICIOS">BIENES Y SERVICIOS</option>
+                        <option value="BIENESTAR INSTITUCIONAL">BIENESTAR INSTITUCIONAL</option>
+                        <option value="BIBLIOTECA">BIBLIOTECA</option>
+                        <option value="CENTRO DE LENGUAS">CENTRO DE LENGUAS</option>
+                        <option value="COMUNICACIONES">COMUNICACIONES</option>
+                        <option value="CONTABILIDAD">CONTABILIDAD</option>
+                        <option value="DEPORTES">DEPORTES</option>
+                        <option value="DIRECCION DE CONTROL INTERNO">DIRECCION DE CONTROL INTERNO</option>
+                        <option value="EXTENSION ACADEMICA Y PROYECCION SOCIAL">EXTENSION ACADEMICA Y PROYECCION SOCIAL
+                        </option>
+                        <option value="FACULTAD DE ADMINISTRACION">FACULTAD DE ADMINISTRACION</option>
+                        <option value="FACULTAD DE ARQUITECTURA E INGENIERIA">FACULTAD DE ARQUITECTURA E INGENIERIA
+                        </option>
+                        <option value="FACULTAD DE CIENCIAS DE LA SALUD">FACULTAD DE CIENCIAS DE LA SALUD</option>
+                        <option value="FACULTAD DE CIENCIAS SOCIALES Y EDUCACION">FACULTAD DE CIENCIAS SOCIALES Y
+                            EDUCACION</option>
+                        <option value="GESTION DOCUMENTAL">GESTION DOCUMENTAL</option>
+                        <option value="GESTION LEGAL">GESTION LEGAL</option>
+                        <option value="GRADUADOS">GRADUADOS</option>
+                        <option value="INVESTIGACION">INVESTIGACION</option>
+                        <option value="INFRAESTRUCTURA">INFRAESTRUCTURA</option>
+                        <option value="INTERNACIONALIZACION">INTERNACIONALIZACION</option>
+                        <option value="LABORATORIOS FACULTAD ARQUITECTURA E INGENIERIA">LABORATORIOS FACULTAD
+                            ARQUITECTURA E INGENIERIA</option>
+                        <option value="LABORATORIOS FACULTAD CIENCIAS DE LA SALUD">LABORATORIOS FACULTAD CIENCIAS DE LA
+                            SALUD</option>
+                        <option value="LABOTATORIOS FACULTAD DE ADMINISTRACION">LABOTATORIOS FACULTAD DE ADMINISTRACION
+                        </option>
+                        <option value="LACMA">LACMA</option>
+                        <option value="PERMANENCIA">PERMANENCIA</option>
+                        <option value="PLANEACION">PLANEACION</option>
+                        <option value="PRESUPUESTO">PRESUPUESTO</option>
+                        <option value="PRESUPUESTO PARTICIPATIVO">PRESUPUESTO PARTICIPATIVO</option>
+                        <option value="RECTORIA">RECTORIA</option>
+                        <option value="SECRETARIA GENERAL">SECRETARIA GENERAL</option>
+                        <option value="SEGURIDAD Y SALUD EN EL TRABAJO">SEGURIDAD Y SALUD EN EL TRABAJO</option>
+                        <option value="TALENTO HUMANO">TALENTO HUMANO</option>
+                        <option value="TECNOLOGIA DE INFORMACION Y COMUNICACION">TECNOLOGIA DE INFORMACION Y
+                            COMUNICACION</option>
+                        <option value="TESORERIA">TESORERIA</option>
+                        <option value="VICERRECTORIA ACADEMICA">VICERRECTORIA ACADEMICA</option>
+                        <option value="VICERRECTORIA ADMINISTRATIVA Y FINANCIERA">VICERRECTORIA ADMINISTRATIVA Y
+                            FINANCIERA</option>
+                        <option value="VIRTUALIDAD">VIRTUALIDAD</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary" style="background-color: #108181;">Generar</button>
+                    <a class="btn btn-primary" href="{{url_for("login")}}"
+                        style="background-color: #108181; margin-left: 10px;">Regresar</a>
+
+                </div>
+            </form>
+
+
+        </div>
+
+        <div class="center" style="position: fixed; bottom: 0; width: 100%; margin-left: -15.5em;">
+            <h5 style="color:aliceblue;text-shadow: 1px 1px #202020">Desarrollado por: Jaime Andres Serrano Garcia -
+                Programador -
+                Institución Universitaria Colegio Mayor de Antioquia - Gestión de Tecnología y Medios Audiovisuales -
+                2023
+            </h5>
+        </div>
+</body>
+
+</html>
