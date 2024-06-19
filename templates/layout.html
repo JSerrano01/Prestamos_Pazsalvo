@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="{{url_for('static', filename='css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/estilo.css')}}">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/fontawesome.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/jquery.dataTables.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/jquery.modal.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/font-awesome.min.css')}}">
+</head>
+
+<body>
+    <nav class="navbar navbar-default nav-style">
+
+
+        <div class="container">
+
+            <div class="navbar-header nav-style">
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+
+                    <span class="sr-only ">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div id="navbar" class="collapse navbar-collapse ">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <img src="{{url_for('static', filename='Logo-Colmayor-Color-Blanco-1.png')}}" alt="Avatar"
+                            class="image" />
+                    </li>
+                    <li>
+                        {% if session['permisos'] == 'checker' %}
+                            <a href="/mostrarEquiposSalida" style="color:white;margin-top: 15px;font-size: 22px; margin-left: 1em;">MODULO DE PRESTAMO Y NOVEDADES</a>
+                        {%endif%}
+                        {%if session['permisos']=='user' or session['permisos']=='admin'%}
+                            <a href="/" style="color:white;margin-top: 15px;font-size: 22px; margin-left: 1em;">MODULO DE PRESTAMO Y NOVEDADES</a>
+                        {%endif%}
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    {% if session['nombre'] %}
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top: 15px;">
+                            <i class="far fa-user fa-1x"></i>
+                            {{session['nombre']}}
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/logout" style="color:black;">Cerrar sesión</a>
+                            </li>
+                        </ul>
+
+
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top: 15px;">
+                            <i class="far fa-gear fa-1x"></i>
+                            Acciones
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                {%if session['permisos']=='admin'%}
+                                <a href="/registerUser" style="margin-top: 17px; color:black;">Administrar usuario</a>
+                                {%endif%}
+                            </li>
+                            <li>
+                                {%if session['permisos']=='user' or session['permisos']=='admin'%}
+                                <a href="/cargarNovedades" style="margin-top: 17px; color:black;">Carga masiva de novedades</a>
+                                {%endif%}
+                            </li>
+                            <li>
+                                {%if session['permisos']=='checker'%}
+                                <a href="/mostrarEquiposSalida" style="margin-top: 17px; color:black;">Revisar equipos para salida</a>
+                                {%endif%}
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif%}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container pt-4">
+
+        {% block content %} {% endblock %}
+        
+    </div>
+    
+    <script src="{{url_for('static', filename='js/jquery.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery-ui.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.validate.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.modal.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block title %}MODULO PRESTAMOS Y NOVEDADES Home {% endblock %}
+
+{% block content %}
+<div class="container">
+   {% with messages = get_flashed_messages() %}
+   {% if messages %}
+   {% for message in messages %}
+   <div class="alert alert-success alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>{{message}}</strong>
+   </div>
+   {% endfor %}
+   {% endif %}
+   {% endwith %}
+
+   <div class="row">
+      <div class="col-12 text-left" style="padding-right: 1000px;">
+         <button class="bgcard4">
+            <i class="far fa-file-alt"></i>
+            <a href="/reporteExternosParam">Reporte de préstamos externos</a>
+         </button>
+      </div>
+   </div>
+
+<div class="center-horizon-vert">
+   <div class="row">
+      <h2 class="text-center">¿A quién desea prestar o generar novedad?:</h2>
+      <br>
+      <div class="col-sm-4">
+         <button class="card-home bgcard1 text-center zoom">
+            <i class="far fa-chalkboard-teacher fa-9x bg-icon"></i>
+            <a href="/indexDocentes" style="color: white; font-size: 20px;">PROFESORES</a>
+         </button>
+      </div>
+      <div class="col-sm-4">
+         <button class="card-home bgcard2 child text-center zoom">
+            <i class="far fa-user fa-10x bg-icon"></i>
+            <a href="/indexContratistas" style="color: white; font-size: 20px;">ADMINISTRATIVOS</a>
+         </button>
+      </div>
+      <div class="col-sm-4">
+         <button class="card-home bgcard3 child text-center zoom">
+            <i class="far fa-user-graduate fa-10x bg-icon"></i>
+            <a href="/indexEstudiantes" style="color: white; font-size: 20px;">ESTUDIANTES</a>
+         </button>
+      </div>
+   </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,158 @@
+.login-form {
+  width: 340px;
+  margin: 30px auto;
+  font-size: 15px;
+}
+.login-form form {
+  margin-bottom: 15px;
+  background: #f7f7f7;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-radius: 30px;
+}
+.login-form h2 {
+  margin: 0 0 15px;
+}
+.form-control,
+.btn {
+  min-height: 38px;
+  border-radius: 2px;
+}
+.btn {
+  font-size: 15px;
+  font-weight: bold;
+}
+.margin {
+  padding: 30px;
+}
+
+.center {
+  margin: 0 auto;
+  width: 80%;
+}
+
+#todo {
+  margin: 0 auto;
+  width: 100%;
+}
+a.close {
+  float: right;
+}
+
+.row {
+  margin: 10px;
+}
+
+.card-home {
+  height: 250px;
+  width: 100%;
+  box-shadow: 1px 1px 5px lightgrey;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+}
+.bgcard1 {
+  background: #195855;
+}
+
+.bgcard2 {
+  background: #108181;
+}
+
+.bgcard3 {
+  background: #fbbb28;
+}
+
+.bg-icon {
+  color: white;
+  height: 150px;
+}
+
+.center-horizon-vert {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.zoom:hover {
+  transform: scale(1.2); /* (150% zoom)*/
+}
+
+.nav-style {
+  background-color: #108181;
+  width: 100%;
+}
+
+.nav.navbar-nav li a {
+  color: #fff;
+  font-size: 20px;
+}
+
+.image {
+  margin-top: 3px;
+  width: 192px;
+  height: 60px;
+  margin-bottom: 3px;
+}
+
+.my-error-class {
+  border-color: #ff0000;
+}
+
+#loader {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75) url(images/loading2.gif) no-repeat center
+    center;
+  z-index: 10000;
+}
+.table td,
+.table th {
+  font-size: 11px;
+}
+.fondocol {
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(25, 88, 85, 1),
+      rgba(231, 184, 83, 0.73)
+    ),
+    url("DSC_0183.JPG");
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5em;
+  width: 50%;
+}
+
+.bgcard4 {
+  background-color: #4b5320; /* Verde Militar */
+  color: white;
+  font-size: 16px; /* Tamaño de fuente más pequeño */
+  padding: 10px 20px; /* Tamaño del botón más pequeño */
+  border: none;
+  border-radius: 5px;
+}
+.bgcard4 a {
+  color: white;
+  text-decoration: none;
+}
+.bgcard4 i {
+  font-size: 2em; /* Icono más pequeño */
+  margin-right: 10px;
+}

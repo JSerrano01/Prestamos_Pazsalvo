@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/estilo.css')}}">
+</head>
+
+<body class="fondocol_paz">
+    <div class="container pt-4">
+        <img src="{{url_for('static', filename='Logo-Colmayor-Color-Blanco-2.png')}}" class="center"
+            alt="Responsive image" style="height:6em; width:19em">
+        <div class="login-form">
+
+            <h3 class="text-center" style="color:aliceblue;text-shadow: 2px 2px #202020;"><b>Resultados de la
+                    consulta:</b></h3>
+            <form>
+                <input type="hidden" name="documento" value="{{ resultado.documento }}">
+                <input type="hidden" name="nombre" value="{{ resultado.nombre }}">
+                <p><strong>Nombre:</strong> {{ resultado.nombre }}</p>
+                <p><strong>Cedula:</strong> {{ resultado.documento }}</p>
+                <p><strong>Dependencia:</strong> {{ resultado.dependencia }}</p>
+                <p><strong>Mensaje:</strong> Usted se encuentra a paz y salvo con la institución</p>
+                <br>
+
+            </form>
+            <form action="/generar_formato" method="post">
+                <input type="hidden" name="documento" value="{{ resultado.documento }}">
+                <input type="hidden" name="nombre" value="{{ resultado.nombre }}">
+            
+                <div class="form-group">
+                    <label>Ingresa el numero de contrato: </label>
+                    <input type="text" class="form-control" name="contrato" required>
+                    <div><br> Ej. CMA-CD-158XXX-JU-6XX-20XX</div>
+                </div>
+            
+                <div class="form-group">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" style="background-color:#108181;">Generar Formato</button> <br> <br> <button formaction="/generar_certificado" class="btn btn-primary" style="background-color:#108181;">Generar Certificado</button>
+                    </div>
+                </div>
+                <a class="btn btn-primary" href="{{url_for('pazsalvo')}}" style="background-color:#108181;">REGRESAR</a>
+            </form>
+            
+            
+        </div>
+</body>
+
+</html>

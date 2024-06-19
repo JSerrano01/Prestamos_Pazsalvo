@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block title %} Register {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{message}}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="col-md-6 col-md-offset-3">
+            <div class="form-group">
+                <h2>Carga masiva de novedades para administrativos</h2>
+                <br>
+                <h5>Debe tener en cuenta que las novedeades deben cargarse en un formáto específico de excel, el cual se puede descargar <a href = "https://docs.google.com/spreadsheets/d/1XyzpuApdAdUTe2xPgrwi8Zt8JJiwAMWv/edit?usp=share_link&ouid=116248424121597266654&rtpof=true&sd=true">aquí.</a></h5>
+                <br>
+            </div>
+            <form action="/cargarNovedades" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" name="upload-file" value="">
+                </div>
+                <br>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit" style="background-color:#108181 ;margin-bottom: 10px;">Subir novedades</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

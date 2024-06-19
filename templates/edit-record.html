@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card card-body">
+        <form action="/update/{{registro.id}}" method="POST">
+          <div class="form-group">
+            <input type="text" name="nombre" value="{{registro.nombre}}" class="form-control" placeholder="Nombre">
+          </div>
+          <div class="form-group">
+            <input type="text" name="cedula" value="{{registro.cedula}}" class="form-control" placeholder="Cédula">
+          </div>
+          <div class="form-group">
+            <label>Dependencia del solicitante</label>
+            <select class="form-control" aria-label="Default select example" id='selectDependenciaSolicitante' name='selectDependenciaSolicitante' value="{{registro.depSolicitante}}">
+              <option disabled>Seleccione una dependencia</option>
+              {%for dependencia in dependencias%}
+                {%if dependencia['Descripción']==registro.depSolicitante%}
+                  <option value="{{dependencia['Descripción']}}" selected>{{dependencia["Descripción"]}}</option>
+                {%else%}
+                  <option value="{{dependencia['Descripción']}}">{{dependencia["Descripción"]}}</option>
+                {%endif%}
+              {%endfor%}
+            </select>
+  
+          </div>
+          <div class="form-group">
+            <input type="text" name="prestamo" value="{{registro.prestamo}}" class="form-control" placeholder="Prestamo">
+          </div>
+          <div class="form-group">
+            <select class="form-control" aria-label="Default select example" id='selectEstado' name='estado' value={{registro.estado}}>
+              {% if registro.estado=='Activo'%}
+                <option value="Activo" selected>Activo</option>
+                <option value="Entregado" >Entregado</option>
+              {%else%}
+                <option value="Activo">Activo</option>
+                <option value="Entregado" selected>Entregado</option>
+              {%endif%}  
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="text" name="observaciones" value="{{registro.observaciones}}" class="form-control" placeholder="Observaciones">
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Actualizar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

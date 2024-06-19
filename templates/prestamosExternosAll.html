@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2 style='color:#108181;'>Registros activos de prestamo externos:</h2>
+    </div>
+    <div>
+      <table class="table table-striped table-hover table-bordered table-sm bg-white" id='tableReg'>
+        <br>
+        <thead>
+          <tr>
+            <td>Fecha de prestamo</td>
+            <td>Entrega</td>
+            <td>Recibe</td>
+            <td>Usuario</td>
+            <td>Cédula</td>
+            <td>Dependencia Solicitante</td>
+            <td>Dependencia Prestamo</td>
+            <td>Prestamo</td>
+            <td>Estado</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reg in registro %}
+          <tr>
+            <td>{{reg.fechaPrestamo}}</td>
+            <td>{{reg.personaEntrega}}</td>
+            <td>{{reg.personaRecibe}}</td>
+            <td>{{reg.nombre}}</td>
+            <td>{{reg.cedula}}</td>
+            <td>{{reg.depSolicitante}}</td>
+            <td>{{reg.depPrestamo}}</td>
+            <td>{{reg.prestamo}}</td>
+            <td>{{reg.estado}}</td>
+            {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="container">
+      <form action="{{url_for('descargar_excel')}}" method="post">
+        <h2 style='color:#108181;'>Descargar Reporte Excel:</h2>
+        <div class="form-group">
+          <input name="fechaInicial" type="hidden" value="{{ fechaInicial }}">
+          <input name="fechaFinal" type="hidden" value="{{ fechaFinal }}">
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary" style="background-color:#108181;">Descargar Excel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+
+
+  {% endblock %}

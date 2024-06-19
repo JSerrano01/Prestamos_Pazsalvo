@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}MODULO PRESTAMOS Y NOVEDADES Home {% endblock %}
+
+{% block content %}
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>{{message}}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="center-horizon-vert">
+        <div class="row">
+            <form action="/generarReportePrestamosExternos" method="post">
+                <h4 class="text-center" style="color: #108181">FECHA GENERACION DE REPORTE:</h4>
+                <div class="form-group">
+                    <label>Fecha incial:</label>
+                    <input type="date" class="form-control" name="fechaInicial" required>
+                </div>
+                <div class="form-group">
+                    <label>Fecha Final:</label>
+                    <input type="date" class="form-control" name="fechaFinal" required>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary" style="background-color: #108181;">Generar</button>
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,215 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div class="row">
+
+  <div class="col-md-8 col-md-offset-2">
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>{{message}}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="card card-body ">
+      <form id="formularioPrestamo" action="{{url_for('add_record')}}" enctype = "multipart/form-data" method="POST">
+        <h2 style="color:#108181;">Prestamo a Docentes</h2>
+        <br>
+        <div class="form-group col-md-6">
+          <label>Cédula del docente</label>
+          <input type="text" class="form-control" name="cedDocente" id="cedDocente">
+        </div>
+        <div class="form-group col-md-6">
+          <label>Nombre Completo del docente</label>
+          <input type="text" class="form-control" name="nombreSolic" id="nombreSolic" required=true>
+        </div>
+        <div class="form-group col-md-8">
+          <label>Dependencia del docente</label>
+          <select class="form-control" aria-label="Default select example" id='selectDependenciaSolicitante'
+            name='selectDependenciaSolicitante' required=true>
+            <option disabled selected>Seleccione una dependencia</option>
+            {%for dependencia in dependencias%}
+            <option value="{{dependencia['descripcion']}}">{{dependencia["descripcion"]}}</option>
+            {%endfor%}
+          </select>
+          <button type="button" class="btn btn-link" id="otraDependencia">Seleccionar otra dependencia</button>
+        </div>
+        <div class = "form-group col-md-1">
+          <button type="button" class="btn btn-primary" style="margin-top:1.5em; background-color: #108181;" id="addDoc"
+            style="background-color:#108181 ;">
+            <i class="far fa-save fa-1x"></i>
+          </button>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Cód.prestamo/Novedad</label>
+          <input type="text" class="form-control" name="codPrestamo" id="codPrestamo" required=true>
+        </div>
+        <div class='form-group col-md-6'>
+          <label id="labelAula" for="selectAula">Aula:</label>
+          <select class="form-control " aria-label="Default select example" id='selectAula'>
+            <option disabled selected>Seleccione un aula</option>
+            {%for aula in aulas%}
+            <option value="{{aula['aula']}}">{{aula['aula']}}</option>
+            {%endfor%}
+          </select>
+          <button type="button" class="btn btn-link" id="otraAula">Seleccionar otra aula</button>
+        </div>
+        <div class='form-group col-md-6'>
+          <label for="selectHorario" id="labelHorario">Horario:</label>
+          <select class="form-control " aria-label="Default select example" id='selectHorario'>
+            <option disabled selected>Seleccione un horario</option>
+            {%for horario in horarios%}
+            <option value="{{horario['hora_inicio']}} - {{horario['hora_final']}}">{{horario['hora_inicio']}} -
+              {{horario['hora_final']}}</option>
+            {%endfor%}
+          </select>
+          <button type="button" class="btn btn-link " id="otroHorario">Seleccionar otro horario</button>
+        </div>
+
+        <div class='form-group col-md-3' id="divCodIng">
+          <label id="labelCodInventario">Cód.Inventario</label>
+          <input type="text" class="form-control" name="codigoInventario" id="codigoInventario">
+        </div>
+        <div class='form-group col-md-12' id="divInfoEq">
+          <label for="infoEquipo" id="labelInfoEquipo">Información</label>
+          <input type="text" class="form-control" name="infoEquipo" id="infoEquipo">
+        </div>
+        
+        <div class='form-group col-md-6' id="divFormaPrest">
+          <label for="selectFormaPrestamo" id="labelFormaPrestamo">Forma de prestamo</label>
+          <select class="form-control" aria-label="Default select example" id='selectFormaPrestamo'
+            name='selectFormaPrestamo'>
+            <option disabled selected>Seleccione una forma de prestamo</option>
+            <option value="Interno">Prestamo interno</option>
+            <option value="Externo">Prestamo externo</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6" id="divHoraInicio">
+          <label for='horaInicioEquipo' id="labelHoraInicio">Hora de inicio del prestamo</label>
+          <input type="time" class="form-control" name="horaInicio" placeholder="Hora de inicio" id='horaInicioEquipo'>
+        </div>
+        <div class="form-group col-md-6" id="divHoraFinal">
+          <label for='horaFinalEquipo' id="labelHoraFinal">Hora de finalización del prestamo</label>
+          <input type="time" class="form-control" name="horaFinal" placeholder="Hora final" id='horaFinalEquipo'>
+        </div>
+        <div class='form-group col-md-12' id="divInfoNovedades">
+          <label for="infoNovedad" id="labelInfoNovedad">Ingrese la novedad a registrar:</label>
+          <input type="text" class="form-control" name="infoNovedad" id="infoNovedad">
+        </div>
+        <div class='form-group col-md-12' id="divArcComp">
+          <label for="file" id="labelComprobante">Comprobante</label>
+          <input type = "file" name = "file" />
+        </div>
+        <div class="form-group col-md-12">
+          <input type="text" class="form-control" name="observaciones" placeholder="Observaciones" id="observaciones">
+        </div>
+        
+        <div class='form-group col-md-8'>
+          <button type="button" class="btn btn-primary " id="addEquipo"
+            style="background-color:#108181 ;">Agregar</button>
+          <button type="button" class="btn btn-primary " id="addAula"
+            style="background-color:#108181 ;">Agregar</button>
+          <button type="button" class="btn btn-primary " id="addNovedad"
+          style="background-color:#108181 ;">Agregar</button>
+        </div>
+        <div class='form-group col-md-4'>
+
+        </div>
+        <div class="form-group col-md-12">
+          <ul class="list-group" id='todo'></ul>
+        </div>
+        <div class="form-group col-md-4">
+          <button class="btn btn-primary" style="background-color:#108181 ;" type="submit">
+            Guardar prestamo/Registrar Novedad
+          </button>
+        </div>
+      </form>
+    </div>
+    <br>
+
+
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2 style='color:#108181;'>Registros activos de prestamo/novedades:</h2>
+      <div class="col-md-4">
+        <button class="btn btn-primary" style="background-color:#108181 ;margin-bottom: 10px;" id="btnEntregar">
+          Devolver selección/Resolver novedad
+        </button>
+      </div>
+
+    </div>
+    <div>
+      <table class="table table-striped table-hover table-bordered table-sm bg-white" id='tableReg'>
+        <br>
+        <thead>
+          <tr>
+            <td>Fecha de prestamo/Novedad</td>
+            <td>Entrega/Registra Novedad</td>
+            <td>Recibe/Resuelve Novedad</td>
+            <td>Usuario</td>
+            <td>Cédula</td>
+            <td>Dependencia Solicitante</td>
+            <td>Dependencia Prestamo/Novedad</td>
+            <td>Prestamo/Novedad</td>
+            <td>Estado</td>
+            <td>Comprobante</td>
+            <td>Operaciones</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for registro in registros %}
+          <tr>
+            <td>{{registro.fechaPrestamo}}</td>
+	    <td>{{registro.personaEntrega}}</td>
+	    <td>{{registro.personaRecibe}}</td>
+            <td>{{registro.nombre}}</td>
+            <td>{{registro.cedula}}</td>
+            <td>{{registro.depSolicitante}}</td>
+            <td>{{registro.depPrestamo}}</td>
+            <td>{{registro.prestamo}}</td>
+            <td>{{registro.estado}}</td>
+            {% if registro.comprobante != '' and registro.comprobante != none%}
+                <td><a href="/files/{{registro.comprobante}}" target="blank">{{registro.comprobante}}</a></td>
+            {% else %}
+                <td></td>
+            {% endif %}
+            <td>
+		{% if registro.estado=='Activo'%}
+
+             	 <label><input type="checkbox" id="{{registro.id}}" value="{{registro.id}}">Devolver/Resolver</label><br>
+              	{%endif%}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <h2 style='color:#108181;'>Generación de reporte:</h2>
+      <div class='form-group col-md-4'>
+        <label for="fechaInicioReporte">Fecha Inicio:</label>
+        <input type="date" class="form-control" name="fechaInicioReporte" placeholder="Fecha de inicio" id='fechaInicioReporte'>
+      </div>
+      <div class='form-group col-md-4'>
+        <label for="fechaFinReporte">Fecha Fin:</label>
+        <input type="date" class="form-control" name="fechaFinReporte" placeholder="Fecha de finalización" id='fechaFinReporte'>
+      </div>
+      <div class='form-group col-md-4'>
+        <label for="accionGenerarReporte">Acción:</label>
+        <br>
+        <button class="btn btn-primary" style="background-color:#108181 ;margin-bottom: 10px;" id="btnReporteDocentes">
+          Generar Reporte
+        </button>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  
+  
+  {% endblock %}
